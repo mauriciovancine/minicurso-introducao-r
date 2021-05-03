@@ -1,0 +1,319 @@
+---
+title: "Introdução ao uso de dados geoespaciais no R <br><br><br>"
+subtitle: "Maurício H. Vancine"
+institute: ""
+date: "22/05/2021"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, custom.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: rainbow
+      highlightLines: false
+      highlightSpans: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE, encoding = "UTF-8")
+knitr::opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
+```
+
+class: inverse, center, middle
+
+# Primeiramente, gostaria de agradecer a todas e todos que estão no curso, sejam muito bem-vindas e bem-vindos!
+
+---
+
+background-image: url(img/igor_live.jpg), url(img/curso_florestal.png), url(img/igor.webp)
+background-size: 350px, 700px, 200px
+background-position: 60% 10%, 80% 85%, 90% 10%
+
+# Curso
+
+## Conteúdo
+
+### 1 Apresentação (10 min)
+
+1. Ministrante
+1. Curso
+1. Horários
+1. Slides
+1. Apostila
+1. Funcionamento do curso
+1. Conferindo os computadores
+
+---
+
+background-image: url(img/general_sig.jpg)
+background-size: 300px
+background-position: 80% 75%
+
+# Curso
+
+## Conteúdo
+
+### 2 Estrutura e fonte de dados geoespaciais (1 h)
+
+1. Geoprocessamento
+1. Cartografia
+1. *Global Positioning System* (GPS)
+1. Sensoriamento Remoto
+1. Sistema de Informação Geográfica (SIG)
+1. Dados geoespaciais
+1. Dados vetoriais
+1. Tabela de atributos
+1. Formato de arquivos vetoriais
+1. Dados matriciais (gride ou raster)
+1. Formatos de arquivos matriciais (raster)
+1. Banco de dados geoespaciais
+1. Conversão de dados geoespaciais
+1. Principais fontes de dados geoespaciais
+1. Material para estudo sobre dados geoespacias
+
+---
+
+background-image: url(img/r_rstudio.png)
+background-size: 450px
+background-position: 80% 75%
+
+# Curso
+
+## Conteúdo
+
+### 3 Introdução ao R (20 min)
+
+1. Linguagem R
+1. RStudio
+1. Console
+1. Scripts
+1. Operadores
+1. Objetos
+1. Funções
+1. Pacotes
+1. Ajuda (*Help*)
+1. Citações
+1. Diretório de trabalho
+1. Importar e exportar dados
+1. *tidyverse*
+1. Principais erros de iniciantes
+
+---
+
+background-image: url(img/r_spatial.jpeg)
+background-size: 350px
+background-position: 85% 85%
+
+# Curso
+
+## Conteúdo
+
+### 4 Estrutura e manipulação de dados vetoriais (2.5 h)
+
+1. Principais pacotes
+1. Geometrias *sf*
+1. Classes *sf*
+1. Importar dados vetoriais
+1. Descrição de objetos *sf*
+1. Converter objetos para *sf*
+1. Converter CRS de objetos *sf*
+1. Operações de objetos *sf*
+1. Exportar dados vetoriais
+
+---
+
+background-image: url(img/r_spatial.jpeg)
+background-size: 350px
+background-position: 85% 85%
+
+# Curso
+
+## Conteúdo
+
+### 5 Estrutura e manipulação de dados matriciais (3 h)
+
+1. Principais pacotes
+1. Classes *raster*
+1. Importar dados matriciais (raster)
+1. Descrição de objetos *raster*
+1. Converter CRS de objetos *raster*
+1. Operações de objetos *raster*
+1. Interação raster-vetor
+1. Conversão raster-vetor
+1. Índices espectrais (NDVI)
+1. Exportar dados matriciais
+
+---
+
+background-image: url(img/package_ggplot2.png), url(img/package_tmap.png), url(img/package_leaflet.png)
+background-size: 250px, 250px, 250px
+background-position: 73% 30%, 45% 90%, 90% 90%
+
+# Curso
+
+## Conteúdo
+
+### 6 Visualização de dados geoespaciais (mapas) (1 h)
+
+1. Principais elementos de um mapa
+1. Pacotes para produção de mapas
+1. Mapas estáticos
+1. Mapas animados
+1. Mapas interativos
+1. Exportar mapas
+
+---
+
+class: inverse, center, middle
+
+# 1 Apresentação
+
+---
+
+background-image: url(img/unesp_logo.jpg), url(img/person_mauricio_vancine.jpg),url(img/gif_frog.gif)
+background-size: 400px, 250px, 200px
+background-position: 90% 20%, 84% 80%, 60% 90%
+
+# 1.1 Maurício H. Vancine
+
+### Ecólogo (2015) | Mestre em Zoologia (2018) | Doutorando em Ecologia (2020)
+
+**Pesquisa**
+- Ecologia Espacial
+- Ecologia Quantitativa
+- Ecologia e Conservação de Anfíbios
+
+**Habilidades**
+- Modelos de Distribuição de Espécies (SDMs)
+- Análise de Dados Ecológicos e Geoespaciais
+- *Open source* [R, QGIS, GRASS GIS, Linux, ...]
+
+**Informações:**
+
+- `r icons::icon_style(icons::fontawesome(name = "envelope", style = "solid"), fill = "#23373b")` [mauricio.vancine@gmail.com]()
+- `r icons::icon_style(icons::fontawesome("twitter"), fill = "#23373b")` [@mauriciovancine](https://twitter.com/mauriciovancine)  
+- `r icons::icon_style(icons::fontawesome(name = "github"), fill = "#23373b")` [mauriciovancine](https://github.com/mauriciovancine)
+- `r icons::icon_style(icons::fontawesome(name = "link", style = "solid"), fill = "#23373b")` [mauriciovancine.github.io](https://mauriciovancine.github.io)
+
+---
+
+background-image: url(img/general_master_meme.jpg)
+background-size: 300px
+background-position: 95% 45%
+
+# 1.2 Curso
+
+## Carga horária: 08 horas
+
+<br><br>
+
+### Tudo vai ser muito rápido
+
+### O conteúdo é bastante extenso
+
+### O principal intuito é fazer uma introdução ao tema
+
+### Prover e indicar material para vocês aprenderem
+
+---
+
+background-image: url(img/gif_delorean.gif)
+background-size: 400px
+background-position: 90% 50%
+
+# 1.3 Horários
+
+<br>
+
+## 1. Primeira parte
+
+### 09:00 h - 12:30 h (com intervalo - 10 min.)
+
+<br>
+
+## Almoço (2 horas)
+
+<br>
+
+## 2. Segunda parte
+
+### 14:30 h - 18:00 h (com intervalo - 10 min.)
+
+---
+
+background-image: url(img/package_xaringan.png)
+background-size: 400px
+background-position: 50% 80%
+
+# 1.4 Slides
+
+## Todos os slides estão disponibilizados em .html
+
+---
+
+background-image: url(img/logo_transparent.png)
+background-size: 400px
+background-position: 50% 80%
+
+# 1.5 Apostila
+
+## Apostila com todo o conteúdo detalhado apresentado nos slides
+
+---
+
+background-image: url(img/general_starwars_teamwork.png)
+background-size: 350px
+background-position: 85% 90%
+
+# 1.6 Funcionamento do curso
+
+## Pontos importantes
+
+### O curso funcionará de **forma passiva** (scripts prontos)
+
+### Eu apresentarei os **conteúdos e códigos** em slides
+
+### Vocês **executam** os códigos disponibilizados nos scripts
+
+### E poderão e devem **fazer perguntas**
+
+### Vamos com **calma** e **tirando as dúvidas**
+
+### Não deixem as dúvidas acumular!
+
+---
+
+background-image: url("img/general_hard_soft.png")
+background-size: 700px
+background-position: 50% 50%
+
+# 1.7 Conferir os computadores
+
+---
+
+class: inverse, center, middle
+
+# Dúvidas?
+
+---
+
+class: clear, middle
+background-image: url(img/gif_frog.gif),url(img/gif_frogs.gif), url(img/package_xaringan.png)
+background-size: 250px, 500px, 130px
+background-position: 35% 50%, 90% 55%, 5% 86%
+
+## Maurício Vancine
+
+<br><br>
+
+Contatos:
+
+`r icons::icon_style(icons::fontawesome(name = "envelope", style = "solid"), fill = "#23373b")` [mauricio.vancine@gmail.com]()  
+`r icons::icon_style(icons::fontawesome("twitter"), fill = "#23373b")` [@mauriciovancine](https://twitter.com/mauriciovancine)  
+`r icons::icon_style(icons::fontawesome(name = "github"), fill = "#23373b")` [mauriciovancine](https://github.com/mauriciovancine)
+`r icons::icon_style(icons::fontawesome(name = "link", style = "solid"), fill = "#23373b")` [mauriciovancine.github.io](https://mauriciovancine.github.io)
+
+<br><br><br><br><br>
+
+Slides criados via pacote [xaringan](https://github.com/yihui/xaringan) e tema [Metropolis](https://github.com/pat-s/xaringan-metropolis). Animação dos sapos por [@probzz](https://twitter.com/probzz/status/1367613720294170627).

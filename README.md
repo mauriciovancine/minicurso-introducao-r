@@ -1,1 +1,1 @@
-# Curso Introdução ao R
+# Minicurso de introdução ao GRASS GIS
